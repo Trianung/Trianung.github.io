@@ -1,0 +1,166 @@
+/* Custom Navbar */
+.custom-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 80px;
+    background-color: #333;
+    /* Better color contrast */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+.custom-navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Sticky effect on scroll */
+}
+
+/* Fullscreen Section Adjustment */
+section {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navbar Icon Adjustments */
+.nav-link i {
+    font-size: 22px;
+    color: white;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.nav-link:hover i {
+    transform: scale(1.2);
+    color: #ffcc00;
+    /* Subtle hover effect */
+}
+
+/* Navbar Link Styling */
+.navbar-nav .nav-link {
+    color: white;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00;
+    /* Matches theme */
+}
+
+/* Hamburger Menu Styling */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22' /%3E%3C/svg%3E");
+    transition: transform 0.3s;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+    transform: rotate(90deg);
+}
+
+/* Sembunyikan tombol close secara default */
+.navbar-close {
+    display: none;
+}
+
+@media (max-width: 991.5px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        /* Mengambil tinggi layar penuh */
+        background-color: rgba(255, 255, 255, 0.678);
+        /* Warna merah transparan */
+        display: flex;
+        align-items: center;
+        /* Pusatkan secara horizontal */
+        justify-content: center;
+        /* Pusatkan secara vertikal */
+        flex-direction: column;
+        gap: 20px;
+        /* Spasi antar link */
+        padding: env(safe-area-inset-top) 20px;
+        overflow-y: auto;
+        /* Scroll saat konten lebih panjang dari layar */
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Pastikan teks rata tengah horizontal */
+        justify-content: center;
+        /* Pusatkan konten secara vertikal */
+        width: 100%;
+        /* Memastikan lebar penuh */
+        height: 100%;
+        /* Memastikan mengambil tinggi penuh */
+    }
+
+    .navbar-close {
+        position: absolute;
+        top: 18px;
+        right: 35px;
+        background: none;
+        border: none;
+        font-size: 25px;
+        color: red !important;
+        cursor: pointer;
+        display: flex;
+    }
+
+    :root {
+        --close-button-color: red;
+    }
+
+    .navbar-nav .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        height: 60px;
+        text-align: center;
+        transition: color 0.5s smooth;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #ffcc00;
+        /* Warna hover */
+    }
+
+    /* Kunci scroll pada body saat menu terbuka */
+    body.nav-open {
+        overflow: hidden;
+    }
+}
+
+
+
+/* Branding */
+.navbar-brand {
+    font-size: 28px;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar-brand:hover {
+    color: #ffcc00;
+}
