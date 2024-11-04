@@ -83,7 +83,7 @@
 
     <!-- Main Content -->
     <section class="container my-5 pt-4">
-        <h1 class="text-light text-start my-4">ACHIEVE</h1>
+        <h1 class="text-light text-start my-4" id="achieve-text">ACHIEVE</h1>
         <div class="row">
             <!-- Card 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
@@ -176,6 +176,39 @@
         </div>
     </footer>
 
+    <!-- animate text-random  -->
+    <script>
+        const targetText = "ACHIEVE";
+        const element = document.getElementById("achieve-text");
+
+        function randomChar() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            return chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        function animateText() {
+            const animationDuration = 150; // milliseconds
+            const totalDuration = 1500; // total time before displaying actual text
+            const iterations = totalDuration / animationDuration;
+            let currentIteration = 0;
+
+            const interval = setInterval(() => {
+                let randomText = '';
+                for (let i = 0; i < targetText.length; i++) {
+                    randomText += randomChar();
+                }
+                element.textContent = randomText;
+
+                currentIteration++;
+                if (currentIteration >= iterations) {
+                    clearInterval(interval);
+                    element.textContent = targetText; // Display the actual text
+                }
+            }, animationDuration);
+        }
+
+        animateText(); // Start the animation
+    </script>
     <!-- Bootstrap & Font Awesome Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBJa+6mU1EnbFQEklsTk9e7Xp9O6Kdv/jZQe6OB3wwjUJSGY" crossorigin="anonymous"></script>
      <!-- Bootstrap Js -->

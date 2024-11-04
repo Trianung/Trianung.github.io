@@ -83,10 +83,10 @@
     <section class="py-5 vh-100 d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-7 text-center text-md-start">
-                    <h1 class="text-light">Hallo</h1>
-                    <h2 class="text-light">I'Am Tri Anung Nugroho</h2>
-                    <h5 class="text-light mb-2">
+                <div class="col-md-7 text-center text-md-start mb-2">
+                    <h1 class="text-light" id="hallo-text">Hallo</h1>
+                    <h2 class="text-light" id="name-text">I'Am Tri Anung Nugroho</h2>
+                    <h5 class="text-light mb-2" id="description-text">
                         I am a student who is a technology enthusiast
                     </h5>
                     <h5 class="auto-type"></h5>
@@ -103,7 +103,6 @@
                             <img src="Asset/kerjasama/Farmhub.png" alt="partner" style="width: 80px; height: auto;">
                         </a>
                     </div>
-                    
                 </div>
                 <div class="col-md-5 text-center">
                     <img src="Asset/foto.jpg" alt="profile" class="img-fluid rounded-circle shadow-lg mt-4" />
@@ -111,7 +110,6 @@
             </div>
         </div>
     </section>
-    
     
 
     <!-- Footer -->
@@ -148,25 +146,23 @@
         </div>
     </footer>
     
-    
+    <!-- animate text-random  -->
     <script>
-        const targetText = "PARTNER OF";
-        const element = document.getElementById("partner-text");
-
+        // Function to generate random characters
         function randomChar() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ';
             return chars.charAt(Math.floor(Math.random() * chars.length));
         }
 
-        function animateText() {
-            const animationDuration = 100; // milliseconds
-            const totalDuration = 3000; // total time before displaying actual text
+        // Function to animate text
+        function animateText(elementId, finalText, animationDuration = 150, totalDuration = 1500) {
+            const element = document.getElementById(elementId);
             const iterations = totalDuration / animationDuration;
             let currentIteration = 0;
 
             const interval = setInterval(() => {
                 let randomText = '';
-                for (let i = 0; i < targetText.length; i++) {
+                for (let i = 0; i < finalText.length; i++) {
                     randomText += randomChar();
                 }
                 element.textContent = randomText;
@@ -174,14 +170,19 @@
                 currentIteration++;
                 if (currentIteration >= iterations) {
                     clearInterval(interval);
-                    element.textContent = targetText; // Display the actual text
+                    element.textContent = finalText; // Display the actual text
                 }
             }, animationDuration);
         }
 
-        animateText(); // Start the animation
+        // Animate each text element
+        animateText("hallo-text", "Hallo");
+        animateText("name-text", "I'Am Tri Anung Nugroho");
+        animateText("description-text", "I am a student who is a technology enthusiast");
+        animateText("partner-text", "PARTNER OF");
     </script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- animate text-running -->
     <script>
         var typed = new Typed(".auto-type", {
             strings: ["Web Developer", "Computer Infrastructure", "Cyber Security"],
