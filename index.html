@@ -80,11 +80,11 @@
     </nav>
 
     <!-- main content -->
-    <section class="py-5 vh-100 d-flex align-items-center">
+    <section class="py-5 vh-100 d-flex align-items-center" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-7 text-center text-md-start mb-2">
-                    <h1 class="text-light" id="hallo-text">Hallo</h1>
+                <div class="col-md-7 text-center text-md-start">
+                    <h1 class="text-light" id="hallo-text" style="margin-bottom: 10px;">Hallo</h1>
                     <h2 class="text-light" id="name-text">I'Am Tri Anung Nugroho</h2>
                     <h5 class="text-light mb-2" id="description-text">
                         I am a student who is a technology enthusiast
@@ -94,13 +94,13 @@
                     <h1 class="text-light mt-4" id="partner-text">PARTNER OF</h1>
                     <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-3">
                         <a href="https://www.instagram.com/posindonesia.ig/" target="_blank">
-                            <img src="Asset/kerjasama/posindo.png" alt="partner" style="width: 80px; height: auto; margin-right: 15px;">
+                            <img src="Asset/kerjasama/posindo.png" alt="partner" style="width: 60px; height: auto; margin-right: 10px;">
                         </a>
                         <a href="https://www.instagram.com/tahfidz_dhuafa.kitabina/" target="_blank">
-                            <img src="Asset/kerjasama/kitabina.png" alt="partner" style="width: 80px; height: auto; margin-right: 15px;">
+                            <img src="Asset/kerjasama/kitabina.png" alt="partner" style="width: 60px; height: auto; margin-right: 10px;">
                         </a>
                         <a href="https://www.instagram.com/farmhubindonesia/" target="_blank">
-                            <img src="Asset/kerjasama/Farmhub.png" alt="partner" style="width: 80px; height: auto;">
+                            <img src="Asset/kerjasama/Farmhub.png" alt="partner" style="width: 60px; height: auto;">
                         </a>
                     </div>
                 </div>
@@ -110,6 +110,7 @@
             </div>
         </div>
     </section>
+    
     
 
     <!-- Footer -->
@@ -148,38 +149,42 @@
     
     <!-- animate text-random  -->
     <script>
-        // Function to generate random characters
+        const texts = [
+            { elementId: "hallo-text", targetText: "Hallo" },
+            { elementId: "name-text", targetText: "I'Am Tri Anung Nugroho" },
+            { elementId: "description-text", targetText: "I am a student who is a technology enthusiast" },
+            { elementId: "partner-text", targetText: "PARTNER OF" }
+        ];
+    
         function randomChar() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ';
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             return chars.charAt(Math.floor(Math.random() * chars.length));
         }
-
-        // Function to animate text
-        function animateText(elementId, finalText, animationDuration = 150, totalDuration = 1500) {
+    
+        function animateText(elementId, targetText) {
             const element = document.getElementById(elementId);
+            const animationDuration = 150; // milliseconds
+            const totalDuration = 1500; // total time before displaying actual text
             const iterations = totalDuration / animationDuration;
             let currentIteration = 0;
-
+    
             const interval = setInterval(() => {
                 let randomText = '';
-                for (let i = 0; i < finalText.length; i++) {
+                for (let i = 0; i < targetText.length; i++) {
                     randomText += randomChar();
                 }
                 element.textContent = randomText;
-
+    
                 currentIteration++;
                 if (currentIteration >= iterations) {
                     clearInterval(interval);
-                    element.textContent = finalText; // Display the actual text
+                    element.textContent = targetText; // Display the actual text
                 }
             }, animationDuration);
         }
-
-        // Animate each text element
-        animateText("hallo-text", "Hallo");
-        animateText("name-text", "I'Am Tri Anung Nugroho");
-        animateText("description-text", "I am a student who is a technology enthusiast");
-        animateText("partner-text", "PARTNER OF");
+    
+        // Start the animation for each text
+        texts.forEach(text => animateText(text.elementId, text.targetText));
     </script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <!-- animate text-running -->
