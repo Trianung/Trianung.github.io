@@ -1,2 +1,2 @@
 # Trianung.github.io
-My protofolio, you like to strart
+My protofolio, you like give star
